@@ -36,3 +36,70 @@
 - [ ] Feature: Yeni özellik ekleneceği zaman bu özellik feature dalına eklenir.Buradaki özellikten kasıt birden fazla commit içeren büyük değişiklikler diyebiliriz.
 - [ ] Release: Sürümdeki sonn değişiklikler(sürüm numarası) bu dalda yapılır.
 - [ ] Hotfix: Sürümde kritik bir hata keşfedilmesi durumunda hatanın çözülüp yayına alınmasında hotfix dalı kullanılır.
+
+# pull request vs issue
+- [ ] öncelikle bir dosyayı pull request olarak göndermek demek projede değişiklikler yaptım sen de bu değişiklikleri onayla ve merge et bende katkı sağlamış olayım anlamına gelir.
+- [ ] issue ise yapılacak işleri, sorunları kaydedebileceğimiz ve listeleyebileceğimiz bir ekrandır.Issue projenin hatalarını izlemek için harika bir yoldur.
+- [ ] Gelelim neden id’lerin artma sebebine, pull request’de id’nin yanında branch ismi yer alır yapılan değişikliklerde id değerinin arttığını gözlemleyebiliriz.
+
+# ASP.NET Boilerplate, ABP Framework
+- [ ] .NET Core için hazırlanmıi open source bir web application frameworkleridir
+- [ ] ABP framework by Volosoft
+- [ ] ABP modern web uygulamaları için full stack geliştirme sağlayan bir platformdur.Böylece gelişitricinin üretkenliğini artırmada yardımcı olmaktadır.Sahip olduğu özellikler :
+	- [ ] Modular, Layered Architecture based on Domain Driven Design
+	- [ ] Microservice Focused
+	- [ ] Multi-Tenancy
+	- [ ] Virtual File System & Theming
+	- [ ] Free & Open Source (LGPL licensed)
+
+# Serialize vs Deserialize
+- [ ] Serialize: nesne runtimedaki durumlarını alıp bir kaynağa transfer etmek için bir formata dönüştürülüp yazma işlemine denir.
+- [ ] Deserialize: Bir kaynakta (file,db) bulunan serileştirilmiş bir formattaki nesnelerin ihtiyaç olduğu durumlarda run timedaki durumuna dönüştürülme işlemidir. 
+	- [ ] Binary Serialization : Binary serileştirme için gerekli olan sınıflar System.Runtime.Serialization.Formatters.Binary altında bulunmaktadır.Nesneler byte array şekline dönüştürülür.
+```
+public static byte[] BinarySerialize(object graph)
+{
+    using (var stream = new MemoryStream())
+    {
+        var formatter = new BinaryFormatter();
+ 
+        formatter.Serialize(stream, graph);
+ 
+        return stream.ToArray();
+    }
+}
+
+```
+	- [ ] SOAP Serialization: Bir nesnenin SOAP protokolü üzerinden transfer edilebilmesi için bu formata uygun serileştirilebilmesi işlemidir.Gerekli olan sınıflar System.Runtime.Serialization.Formatters.SOAP altında yer almaktadır.
+```
+public static string SoapSerialize(object graph)
+{
+   using (var stream = new MemoryStream())
+   {
+      var formatter = new SoapFormatter();
+ 
+      formatter.Serialize(stream, graph);
+ 
+      return Encoding.UTF8.GetString(
+                stream.GetBuffer(), 0, (int)stream.Position);
+   }
+}
+```
+	- [ ] JSON Serialization: Nesneleri JSON şeklinde serileştirilmesine denir.Burada Json.Net kütüphanesi kullanılabilir.
+```
+public static string JsonSerialize(object graph)
+{
+    return JsonConvert.SerializeObject(graph);
+}
+```
+
+# Console Application vs IIS
+![first image]( https://docs.microsoft.com/tr-tr/aspnet/core/host-and-deploy/iis/index/_static/ancm-inprocess.png?view=aspnetcore-3.1)
+- [ ] IIS temelde local bilgisayarımızı bir web server olarak kullanabileceğimiz bir sistemdir.
+- [ ] İstekler Web’den çekirdek modu http.sys sürücüsüne ulaşır.
+- [ ] Sürücü, Web sitesinin yapılandırılmış bağlantı noktasında istekleri IIS’e yönlendirir.Yapılandırılmış bağlantı noktası genellikle 80 (HTTP) veya 443 (HTTPS)
+- [ ] Modül, isteği uygulama için rastgele bir bağlantı noktasında Kestrel’e iletir.Rastgele bağlantı noktası 80 veya 443 değildir.
+
+# Razor Nedir?
+- [ ] ASP.NET teknolojisinde C# ie birlikte dinamik sayfalar oluşturmaya yarayan bir söz dizimidir.Razor syntax aracılığıyla ana makine kısmında(server side) çalışacak kodların ayrımını @ işareti aracılığıyla yapılmaktadır.Ayrıca Frontend çatılarında kullanılan MVVM yapısına benzeyen two way binding özelliğini desteklemektedir.
+- [ ] @page dosyayı MVC’ye dönüştürür.Bu bir denetleyiciden geçmeden istekleri doğrudan işlediği anlamına gelir
