@@ -1,4 +1,4 @@
-# REST vs SOAP	
+﻿# REST vs SOAP	
 
 | REST  | SOAP |	
 | ------------- | ------------- |	
@@ -27,3 +27,12 @@
 - [ ] Rebase and Merge: Feature brach’in geçmişinde ki(history) tüm commitleri master branch’in önüne ekler.Son işlemde ekstra commit eklenmez.	
 - [ ] Squash and Merge: Feature Brach’in tüm commitlerini tek bir commit’te gruplandıracak sonra ana dalın önüne ekleyecektir.Son işlemde ekstra commit ekleyecektir.	
 ![final image](https://i.stack.imgur.com/hUtiB.png)
+
+# Git-flow
+
+![first image](https://miro.medium.com/max/638/0*PRJYeVCeztuOuddN.jpg)
+- [ ] Develop: bir sonraki sürüm için yapılan değişiklikler güncellenir.Ayrıca Jenkins ile CI aracına bağlanarak sürekli inşa edilebilir.
+- [ ] Master: production ready(yayına alınabilir) kod bulunur.
+- [ ] Feature: Yeni özellik ekleneceği zaman bu özellik feature dalına eklenir.Buradaki özellikten kasıt birden fazla commit içeren büyük değişiklikler diyebiliriz.
+- [ ] Release: Sürümdeki sonn değişiklikler(sürüm numarası) bu dalda yapılır.
+- [ ] Hotfix: Sürümde kritik bir hata keşfedilmesi durumunda hatanın çözülüp yayına alınmasında hotfix dalı kullanılır.
